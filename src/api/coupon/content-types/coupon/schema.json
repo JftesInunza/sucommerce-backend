@@ -1,0 +1,69 @@
+{
+  "kind": "collectionType",
+  "collectionName": "coupons",
+  "info": {
+    "singularName": "coupon",
+    "pluralName": "coupons",
+    "displayName": "Coupon",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Discount": {
+      "type": "integer",
+      "max": 100,
+      "min": 0,
+      "required": true,
+      "default": 0
+    },
+    "Enabled": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "MaxUsageLimit": {
+      "type": "integer",
+      "default": 100,
+      "required": false,
+      "min": 0
+    },
+    "CurrentUsage": {
+      "type": "integer",
+      "min": 0,
+      "default": 0
+    },
+    "StartDate": {
+      "type": "date"
+    },
+    "EndDate": {
+      "type": "date"
+    },
+    "Description": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "Type": {
+      "type": "enumeration",
+      "enum": [
+        "Cart",
+        "Product"
+      ],
+      "required": true,
+      "default": "Cart"
+    },
+    "Code": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "products": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::product.product"
+    }
+  }
+}
